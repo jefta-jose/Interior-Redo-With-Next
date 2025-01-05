@@ -75,7 +75,7 @@ export default function Projects() {
       <div className="container grid lg:grid-cols-2 gap-8 py-8">
         {
           projects.map((project) => (
-            <div key={project.id} className="relative overflow-hidden rounded-sm group">
+            <div key={project.id} className="relative overflow-hidden group">
 
             <motion.div
               className="flex h-full"

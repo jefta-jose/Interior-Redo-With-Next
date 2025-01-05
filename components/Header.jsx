@@ -10,6 +10,7 @@ import Mobilenavigation from './Mobilenavigation';
 import ThemeToggler from './ThemeToggler';
 import { usePathname } from 'next/navigation';
 import { TbArrowUpRight } from "react-icons/tb";
+import Link from 'next/link';
 
 
 const Header = () => {
@@ -47,9 +48,11 @@ const Header = () => {
 
                         {/** */}
                         <button className=' relative overflow-hidden group max-md:hidden border-[1px] border-gray-500 p-2 rounded-sm inline-flex items-center font-bold hover:text-white hover:border-none'>
+                            <Link className='inline-flex items-center' href='contact'>
                             <span className=' relative z-10'>Book A Consultancy</span>
                             <TbArrowUpRight className=' relative z-10 h-5 w-5 ml-2'/>
                             <span className="absolute inset-0 bg-primary transform translate-y-full transition-transform duration-500 group-hover:translate-y-0"></span>
+                            </Link>
                         </button>
 
                         {/* Theme Toggler */}

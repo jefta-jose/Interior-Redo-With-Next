@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { desVariants, tagVariants, titleVariants } from '@/utils/animation';
 import { Button } from "./ui/button";
 import { TbArrowUpRight } from "react-icons/tb";
+import Link from "next/link";
 
 
 export default function HomeProjects() {
@@ -59,7 +60,9 @@ export default function HomeProjects() {
       </div>
 
       <Button className=" sm:px-12 pb-4 mt-4 inline-flex items-center py-3 text-white rounded-sm  shadow-lg hover:bg-gray-800 hover:ring-2 hover:ring-gray-950 ring-offset-2">
+            <Link className="inline-flex items-center" href='projects'>
             View More Projects <TbArrowUpRight className="w-5 h-5 ml-2" />
+            </Link>
         </Button>
     </div>
   )

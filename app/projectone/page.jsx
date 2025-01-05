@@ -37,20 +37,20 @@ const page = () => {
             <TableCaption className="text-md upp text-center dark:text-gray-300">Project details.</TableCaption>
             <TableBody>
                 <TableRow className="even:bg-gray-100 dark:even:bg-tertiary">
-                <TableCell className="px-4 py-2">Project Size</TableCell>
-                <TableCell className="px-4 py-2">100SQM</TableCell>
+                <TableCell className="px-4 py-2 lg:text-lg">Project Size</TableCell>
+                <TableCell className="px-4 py-2 lg:text-lg">100SQM</TableCell>
                 </TableRow>
                 <TableRow className="even:bg-gray-100 dark:even:bg-tertiary">
-                <TableCell className="px-4 py-2">Location</TableCell>
-                <TableCell className="px-4 py-2">Chaka Road Mall</TableCell>
+                <TableCell className="px-4 py-2 lg:text-lg">Location</TableCell>
+                <TableCell className="px-4 py-2 lg:text-lg">Chaka Road Mall</TableCell>
                 </TableRow>
                 <TableRow className="even:bg-gray-100 dark:even:bg-tertiary">
-                <TableCell className="px-4 py-2">Status</TableCell>
-                <TableCell className="px-4 py-2">Ongoing</TableCell>
+                <TableCell className="px-4 py-2 lg:text-lg">Status</TableCell>
+                <TableCell className="px-4 py-2 lg:text-lg">Ongoing</TableCell>
                 </TableRow>
                 <TableRow className="even:bg-gray-100 dark:even:bg-tertiary">
-                <TableCell className="px-4 py-2">Scope</TableCell>
-                <TableCell className="px-4 py-2">Design consultancy & Project Management.</TableCell>
+                <TableCell className="px-4 py-2 lg:text-lg">Scope</TableCell>
+                <TableCell className="px-4 py-2 lg:text-lg">Design consultancy & Project Management.</TableCell>
                 </TableRow>
             </TableBody>
             </Table>

@@ -1,7 +1,7 @@
-const page = () => {
+const Page = () => {
   return (
     <div className="container py-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 animate-move-up">
         <div>
           <img className="h-auto max-w-full rounded-lg hover:scale-90 transition-all" src="/image/badroom.jpg" />
         </div>
@@ -13,7 +13,7 @@ const page = () => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 animate-move-down">
         <div>
           <img className="h-auto max-w-full rounded-lg hover:scale-90 transition-all" src="/image/swiper1.jpg" />
         </div>
@@ -25,7 +25,7 @@ const page = () => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 animate-move-up">
         <div>
           <img className="h-auto max-w-full rounded-lg hover:scale-90 transition-all" src="/image/gallery14.jpg" />
         </div>
@@ -37,7 +37,7 @@ const page = () => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 animate-move-down">
         <div>
           <img className="h-auto max-w-full rounded-lg hover:scale-90 transition-all" src="/image/gallery7.jpg" />
         </div>
@@ -48,10 +48,8 @@ const page = () => {
           <img className="h-auto max-w-full rounded-lg hover:scale-90 transition-all" src="/image/gallery3.jpg" />
         </div>
       </div>
-
-
     </div>
   )
 }
 
-export default page
+export default Page
