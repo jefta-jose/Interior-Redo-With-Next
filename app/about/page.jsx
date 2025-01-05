@@ -82,7 +82,7 @@ const page = () => {
           whileInView={"onscreen"}
           variants={tagVariants}
           >
-            <p className='pb-8 tracking-wide mt-6'>
+            <p className='pb-4 tracking-wide mt-2'>
             We are an international Architects. We believe that today it is fundamental to totally rethink archi-tectural education. Confluence not only integrates new visions on society but also incorporates new methods and contemporary tools linked to creativity, production and communication. De-signed and handcrafted to hold and showcase my year two architecture portfolio, the unfolding box allows portfolio sheets… <br /><br />
             We are an international Architects. We believe that today it is fundamental to totally rethink archi-tectural education. Confluence not only integrates new visions on society but also incorporates new methods and contemporary tools linked to creativity, production and communication. De-signed and handcrafted to hold and showcase my year two architecture portfolio, the unfolding box allows portfolio sheets… <br /><br />
             <span className='text-xl font-extrabold tracking-tight'>
