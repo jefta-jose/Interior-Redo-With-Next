@@ -19,7 +19,7 @@ const HeroSection = () => {
                     initial="offscreen"
                     whileInView={"onscreen"}
                     variants={titleVariants}
-                    className='tracking-sm uppercase text-5xl xl:leading-[80px] font-bold mb-5 mt-4 text-primary'>
+                    className='tracking-sm uppercase text-5xl xl:leading-[80px] font-bold mb-2 mt-4 text-primary'>
                         Why choose homeaxil interior design
                     </motion.h1>
 
@@ -36,9 +36,9 @@ const HeroSection = () => {
                         <div className="flex flex-col items-center justify-center text-center gap-4">
                             <Image
                             src={image}
-                            width={236}
-                            height={100}
-                            className="w-full rounded-md shadow-lg"
+                            width={354}
+                            height={150}
+                            className="w-full shadow-lg"
                             alt="image"
                             />
                             <Link
@@ -59,9 +59,9 @@ const HeroSection = () => {
                         <div className="flex flex-col items-center justify-center text-center gap-4">
                             <Image
                             src={image}
-                            width={236}
-                            height={100}
-                            className="w-full rounded-md shadow-lg"
+                            width={354}
+                            height={150}
+                            className="w-full shadow-lg"
                             alt="image"
                             />
                             <Link
@@ -82,9 +82,9 @@ const HeroSection = () => {
                         <div className="flex flex-col items-center justify-center text-center gap-4">
                             <Image
                             src={image}
-                            width={236}
-                            height={100}
-                            className="w-full rounded-md shadow-lg"
+                            width={354}
+                            height={150}
+                            className="w-full shadow-lg"
                             alt="image"
                             />
                             <Link
@@ -104,9 +104,9 @@ const HeroSection = () => {
                         <div className="flex flex-col items-center justify-center text-center gap-4">
                             <Image
                             src={image}
-                            width={236}
-                            height={100}
-                            className="w-full rounded-md shadow-lg"
+                            width={354}
+                            height={150}
+                            className="w-full shadow-lg"
                             alt="image"
                             />
                             <Link
