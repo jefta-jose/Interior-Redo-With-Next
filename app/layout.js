@@ -5,6 +5,10 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
+//toast
+import { Toaster } from "react-hot-toast";
+
+
 //Theme Provider
 import { ThemeProvider } from "@/components/ThemeProvider";
 
@@ -27,6 +31,20 @@ export default function RootLayout({ children }) {
           <Header />
             {children}
           <Footer />
+
+          <Toaster
+              position="top-center"
+              reverseOrder={false}
+              gutter={8}
+              containerClassName=""
+              toastOptions={{
+                style: {
+                  backgroundColor: "black",
+                  color: "white",
+                  icon: '👏',
+                },
+              }}
+        />
         </ThemeProvider>
       </body>
     </html>

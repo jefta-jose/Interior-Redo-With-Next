@@ -13,7 +13,7 @@ import OurProcess from "@/components/OurProcess";
 export default function Home() {
   return (
     <>
-    <HomeCatalogSwiperSection/>
+      <HomeCatalogSwiperSection/>
       <HeroSection />
       <CompanySection />
       <AboutComponent />

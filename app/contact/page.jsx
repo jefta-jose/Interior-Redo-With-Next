@@ -8,6 +8,8 @@ import { TbArrowUpRight } from "react-icons/tb";
 import { useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Map from "@/components/Map";
+import toast from "react-hot-toast";
+
 
 
 function classNames(...classes) {
@@ -16,6 +18,19 @@ function classNames(...classes) {
 
 
 export default function Contact() {
+
+  const [formData, setFormData] = useState({
+    firstname: "",
+    lastname: "",
+    company: "",
+    email: "",
+    message: "",
+  });
+
+  // Handle form change
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
 
   const [agreed, setAgreed] = useState(false);
 
@@ -29,6 +44,32 @@ export default function Contact() {
   const textScale = useTransform(scrollYProgress, [0, 0.3], [1, 0.95]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0.7]);
   const textY = useTransform(scrollYProgress, [0, 0.3], [0, 30]);
+
+
+  const handleContactUs = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:5000/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        toast.success("Email sent successfully!");
+        // Reset form after success
+        setFormData({ firstname: "", lastname: "", company: "", email: "", message: "" });
+        setAgreed(false);
+      } else {
+        toast.error("Failed to send message.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("An error occurred while sending the message.");
+    }
+  };
+
 
   return (
     <div className="">
@@ -74,71 +115,68 @@ export default function Contact() {
         <p className="mt-2 text-lg leading-8 text-muted-foreground">Please feel free to ask anything</p>
       </div>
 
-      <form className="mx-auto mt-8 max-w-xl sm:mt-10">
-        <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-          <div className="mt-2.5">
-            <Input type='name' id='firstname' placeholder='First Name' />
-          </div>
-
-          <div className="mt-2.5">
-            <Input type='name' id='lastname' placeholder='Last Name' />
-          </div>
-
-          <div className="sm:col-span-2">
-            <div className="mt-2.5">
-              <Input type='name' id='Company' placeholder='Company' />
-            </div>
-          </div>
-
-          <div className="sm:col-span-2">
-            <div className="mt-2.5">
-              <Input type='email' id='Company' placeholder='Email Address' />
-            </div>
-          </div>
-
-          <div className="sm:col-span-2">
-            <div className="mt-2.5">
-              <Textarea placeholder='Type Your Message Here...' />
-            </div>
-          </div>
-
-          <Switch.Group as="div" className="flex gap-x-4 sm:col-span-2">
-            <div className="flex h-6 items-center">
-              <Switch
-                checked={agreed}
-                onChange={setAgreed}
-                className={classNames(
-                  agreed ? 'bg-primary' : 'bg-gray-200',
-                  'flex w-8 flex-none cursor-pointer rounded-full p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2'
-                )}
-              >
-                <span className="sr-only">Agree to policies</span>
-                <span
-                  aria-hidden="true"
-                  className={classNames(
-                    agreed ? 'translate-x-3.5' : 'translate-x-0',
-                    'h-4 w-4 transform rounded-full bg-white shadow-sm ring-1 ring-gray-900/5 transition duration-200 ease-in-out'
-                  )}
-                />
-              </Switch>
-            </div>
-            <Switch.Label className="text-sm leading-6 text-gray-600">
-              By selecting this, you agree to our{' '}
-              <a href="#" className="font-semibold text-primary">
-                privacy&nbsp;policy
-              </a>
-              .
-            </Switch.Label>
-          </Switch.Group>
-
-          <div className="mt-2 mb-20">
-            <Button type="submit" className="flex w-full items-center px-8 py-3 text-white rounded-full shadow-lg hover:bg-gray-800 hover:ring-2 hover:ring-gray-950 ring-offset-2 ">
-              Let's Talk <TbArrowUpRight className="w-5 h-5 ml-2" />
-            </Button>
-          </div>
-
+      <form onSubmit={handleContactUs} className="mx-auto mt-8 max-w-xl sm:mt-10">
+      <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+        <div className="mt-2.5">
+          <Input type="text" id="firstname" placeholder="First Name" value={formData.firstname} onChange={handleChange} />
         </div>
-      </form>
+
+        <div className="mt-2.5">
+          <Input type="text" id="lastname" placeholder="Last Name" value={formData.lastname} onChange={handleChange} />
+        </div>
+
+        <div className="sm:col-span-2">
+          <div className="mt-2.5">
+            <Input type="text" id="company" placeholder="Company" value={formData.company} onChange={handleChange} />
+          </div>
+        </div>
+
+        <div className="sm:col-span-2">
+          <div className="mt-2.5">
+            <Input type="email" id="email" placeholder="Email Address" value={formData.email} onChange={handleChange} />
+          </div>
+        </div>
+
+        <div className="sm:col-span-2">
+          <div className="mt-2.5">
+            <Textarea id="message" placeholder="Type Your Message Here..." value={formData.message} onChange={handleChange} />
+          </div>
+        </div>
+
+        <Switch.Group as="div" className="flex gap-x-4 sm:col-span-2">
+          <div className="flex h-6 items-center">
+            <Switch
+              checked={agreed}
+              onChange={setAgreed}
+              className={`flex w-8 flex-none cursor-pointer rounded-full p-px transition-colors duration-200 ${
+                agreed ? "bg-primary" : "bg-gray-200"
+              }`}
+            >
+              <span className="sr-only">Agree to policies</span>
+              <span
+                aria-hidden="true"
+                className={`h-4 w-4 transform rounded-full bg-white shadow-sm transition duration-200 ${
+                  agreed ? "translate-x-3.5" : "translate-x-0"
+                }`}
+              />
+            </Switch>
+          </div>
+          <Switch.Label className="text-sm leading-6 text-gray-600">
+            By selecting this, you agree to our{" "}
+            <a href="#" className="font-semibold text-primary">
+              privacy&nbsp;policy
+            </a>
+            .
+          </Switch.Label>
+        </Switch.Group>
+
+        <div className="mt-2 mb-20">
+          <Button type="submit" className="flex w-full items-center px-8 py-3 text-white rounded-full shadow-lg hover:bg-gray-800">
+            Let's Talk <TbArrowUpRight className="w-5 h-5 ml-2" />
+          </Button>
+        </div>
+      </div>
+    </form>
           <Map/>
     </div>
   );
