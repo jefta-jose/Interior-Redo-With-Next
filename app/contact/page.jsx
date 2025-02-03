@@ -45,9 +45,12 @@ export default function Contact() {
   const textOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0.7]);
   const textY = useTransform(scrollYProgress, [0, 0.3], [0, 30]);
 
+  const [sendingMail, setSendingMail] = useState(false);
+
 
   const handleContactUs = async (e) => {
     e.preventDefault();
+    setSendingMail(true);
 
     try {
       const response = await fetch("https://jefta-jose-interior-next-node-mailer.vercel.app/api/multipleEmails", {
@@ -57,6 +60,7 @@ export default function Contact() {
       });
 
       if (response.ok) {
+        setSendingMail(false);
         toast.success("Email sent successfully!");
         // Reset form after success
         setFormData({ firstname: "", lastname: "", company: "", email: "", message: "" });
@@ -171,10 +175,17 @@ export default function Contact() {
         </Switch.Group>
 
         <div className="mt-2 mb-20">
-          <Button type="submit" className="flex w-full items-center px-8 py-3 text-white rounded-full shadow-lg hover:bg-gray-800">
+          <Button
+            type="submit"
+            disabled={sendingMail}
+            className={`flex w-full items-center px-8 py-3 text-white rounded-full shadow-lg ${
+              sendingMail ? "bg-gray-400 cursor-not-allowed" : "hover:bg-gray-800"
+            }`}
+          >
             Let's Talk <TbArrowUpRight className="w-5 h-5 ml-2" />
           </Button>
         </div>
+
       </div>
     </form>
           <Map/>
