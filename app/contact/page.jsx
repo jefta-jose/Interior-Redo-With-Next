@@ -50,7 +50,7 @@ export default function Contact() {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://jefta-jose-interior-next-node-mailer.vercel.app//api/multipleEmails", {
+      const response = await fetch("https://jefta-jose-interior-next-node-mailer.vercel.app/api/multipleEmails", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
